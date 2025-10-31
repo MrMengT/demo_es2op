@@ -1,0 +1,6 @@
+@EndUserText.label: 'SRVD'
+@ObjectModel.leadingEntity.name: 'ZC_UM_HEAD'
+define service zsrvd_um {
+  expose zc_um_head;
+  expose zc_um_item;
+}

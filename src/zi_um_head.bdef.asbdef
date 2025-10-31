@@ -1,0 +1,29 @@
+unmanaged implementation in class zbp_i_um_head unique;
+strict ( 2 );
+
+define behavior for zi_um_head //alias <alias_name>
+//late numbering
+lock master
+authorization master ( instance )
+//etag master <field_name>
+{
+  create ( authorization : global );
+  update;
+  delete;
+  field ( readonly ) PurchaseOrder;
+  association _item { create; }
+
+  event deleteEvent;
+}
+
+define behavior for zi_um_item //alias <alias_name>
+//late numbering
+lock dependent by _head
+authorization dependent by _head
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) PurchaseOrder, PurchaseOrderItem;
+  association _head;
+}
